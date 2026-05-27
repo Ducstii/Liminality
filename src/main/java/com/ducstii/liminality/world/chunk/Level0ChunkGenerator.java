@@ -76,28 +76,28 @@ public class Level0ChunkGenerator extends BackroomsChunkGenerator {
         if (lx == 0) {
             int cx = Math.floorDiv(wx, CELL_SIZE);
             int cz = Math.floorDiv(wz, CELL_SIZE);
-            return !isWallOpen(cx - 1, cz, true);
+            return isWallOpen(cx - 1, cz, true);
         }
 
         if (lz == 0) {
             int cx = Math.floorDiv(wx, CELL_SIZE);
             int cz = Math.floorDiv(wz, CELL_SIZE);
-            return !isWallOpen(cx, cz - 1, false);
+            return isWallOpen(cx, cz - 1, false);
         }
 
         return false;
     }
 
     private boolean isWallOpen(int cx, int cz, boolean isEast) {
-        if (baseOpen(cx, cz, isEast)) return true;
+        if (baseOpen(cx, cz, isEast)) return false;
 
         int nx = isEast ? cx + 1 : cx;
         int nz = isEast ? cz : cz + 1;
         int myDir = isEast ? EAST : SOUTH;
         int theirDir = isEast ? WEST : NORTH;
 
-        return ((forcedMask(cx, cz) & (1 << myDir)) != 0)
-            || ((forcedMask(nx, nz) & (1 << theirDir)) != 0);
+        return ((forcedMask(cx, cz) & (1 << myDir)) == 0)
+                && ((forcedMask(nx, nz) & (1 << theirDir)) == 0);
     }
 
     private boolean baseOpen(int cx, int cz, boolean isEast) {
@@ -117,7 +117,7 @@ public class Level0ChunkGenerator extends BackroomsChunkGenerator {
         return mask;
     }
 
-    // bitmask of walls this cell forc es open  t o reach MIN_OPENINGS
+    // bitmask of walls this cell forces open to reach MIN_OPENINGS
     private int forcedMask(int cx, int cz) {
         int natural = naturalMask(cx, cz);
         int needed = MIN_OPENINGS - Integer.bitCount(natural);
