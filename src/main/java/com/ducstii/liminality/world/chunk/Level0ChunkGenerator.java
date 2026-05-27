@@ -117,7 +117,7 @@ public class Level0ChunkGenerator extends BackroomsChunkGenerator {
         return mask;
     }
 
-    // bitmask of walls this cell forces open  to reach MIN_OPENINGS
+    // bitmask of walls this cell forces open  t o reach MIN_OPENINGS
     private int forcedMask(int cx, int cz) {
         int natural = naturalMask(cx, cz);
         int needed = MIN_OPENINGS - Integer.bitCount(natural);
