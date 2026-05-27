@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "liminality",
+  "version": "${version}",
+  "name": "Liminality",
+  "description": "Liminal minecraft. Just kidding, its the backrooms!",
+  "authors": [],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/liminality/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "fabric-datagen": [
+      "com.ducstii.liminality.client.LiminalityDataGenerator"
+    ],
+    "client": [
+      "com.ducstii.liminality.client.LiminalityClient"
+    ],
+    "main": [
+      "com.ducstii.liminality.Liminality"
+    ]
+  },
+  "mixins": [
+    "liminality.mixins.json",
+    {
+      "config": "liminality.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}

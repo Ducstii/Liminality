@@ -1,0 +1,19 @@
+# Gradle
+.gradle/
+build/
+out/
+
+# IntelliJ
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Fabric / Minecraft dev
+run/
+*.jar
+remappedSrc/
+
+# OS
+.DS_Store
+Thumbs.db

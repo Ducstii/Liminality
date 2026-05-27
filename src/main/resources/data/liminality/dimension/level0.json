@@ -1,0 +1,10 @@
+{
+  "type": "liminality:level0_type",
+  "generator": {
+    "type": "liminality:level0_chunk_generator",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "liminality:backrooms_biome"
+    }
+  }
+}
