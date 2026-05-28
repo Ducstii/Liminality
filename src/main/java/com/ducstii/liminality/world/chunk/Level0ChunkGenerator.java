@@ -107,7 +107,7 @@ public class Level0ChunkGenerator extends BackroomsChunkGenerator {
         return new Random(seed).nextFloat() < PASSAGE_CHANCE;
     }
 
-    // bitmask of which walls are naturally open for cell (cx, cz) 
+    // bitmask of which walls are naturally open for cell (cx, cz)
     private int naturalMask(int cx, int cz) {
         int mask = 0;
         if (baseOpen(cx, cz, true))      mask |= (1 << EAST);

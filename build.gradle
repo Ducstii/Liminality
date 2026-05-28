@@ -19,6 +19,8 @@ loom {
             sourceSet sourceSets.client
         }
     }
+
+
 }
 
 fabricApi {
@@ -28,11 +30,10 @@ fabricApi {
 }
 
 repositories {
-    // Add repositories to retrieve artifacts from in here.
-    // You should only use this when depending on other mods because
-    // Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
-    // See https://docs.gradle.org/current/userguide/declaring_repositories.html
-    // for more information about repositories.
+    maven {
+        name = "Modrinth"
+        url = "https://api.modrinth.com/maven"
+    }
 }
 
 dependencies {
@@ -42,7 +43,14 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+
+    include modImplementation("maven.modrinth:canvas:fabric-20.0.2625")
+    // Canvas's transitive deps that JiJ doesn't auto-chain in dev
+    include("blue.endless:jankson:1.2.1")
+
+
 }
+
 
 processResources {
     inputs.property "version", project.version

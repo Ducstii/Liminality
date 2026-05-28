@@ -20,7 +20,7 @@ public class BackroomsBlocks {
 
     public static void Init() {
         CEILING_TILE = register("ceiling_tile",
-                new Block(AbstractBlock.Settings.create().strength(1.0f, 1.0f).sounds(BlockSoundGroup.WOOD)));
+                new Block(AbstractBlock.Settings.create().strength(1.0f, 1.0f).sounds(BlockSoundGroup.WOOD).luminance(state -> 15)));
         WALLPAPER = register("wallpaper",
                 new Block(AbstractBlock.Settings.create().strength(0.5f).sounds(BlockSoundGroup.WOOL)));
         BACKROOMS_CARPET = register("backrooms_carpet",
